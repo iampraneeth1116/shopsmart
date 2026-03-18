@@ -56,8 +56,7 @@ jobs:
           SHOPSMART_DEPLOY_PATH: ${{ secrets.SHOPSMART_DEPLOY_PATH || '~/shopsmart' }}
           SERVER_ENV: ${{ secrets.SERVER_ENV }}
         run: |
-          # Evaluate ~ to actual home directory
-          eval DEPLOY_PATH="${SHOPSMART_DEPLOY_PATH:-~/shopsmart}"
+          RAW_DEPLOY_PATH="${SHOPSMART_DEPLOY_PATH:-~/shopsmart}"
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}.git"
           BRANCH="${GITHUB_REF_NAME}"
 
@@ -72,8 +71,11 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/ec2_key.pem \
             "$EC2_USER@$EC2_HOST" \
-            "DEPLOY_PATH='$DEPLOY_PATH' REPO_URL='$REPO_URL' BRANCH='$BRANCH' bash -s" <<'EOF'
+            "RAW_DEPLOY_PATH='$RAW_DEPLOY_PATH' REPO_URL='$REPO_URL' BRANCH='$BRANCH' bash -s" <<'EOF'
           set -euo pipefail
+
+          # Expand ~ on the remote machine, not on the runner
+          eval DEPLOY_PATH="$RAW_DEPLOY_PATH"
 
           # Ensure base tools exist
           if ! command -v git >/dev/null 2>&1; then
