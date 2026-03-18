@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -29,7 +29,7 @@ interface Order {
     customerEmail: string;
 }
 
-export default function OrdersPage() {
+function OrdersContent() {
     const { user, isLoading: authLoading } = useAuth();
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -51,8 +51,6 @@ export default function OrdersPage() {
 
             try {
                 setLoading(true);
-                // Fetch all orders and filter by the current logged-in user's email
-                // In a real app, the backend would only return the user's own orders based on an auth token
                 const allOrders: Order[] = await api.orders.getAll();
                 const userOrders = allOrders.filter(o => o.customerEmail === user.email);
                 setOrders(userOrders);
@@ -188,5 +186,17 @@ export default function OrdersPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function OrdersPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-[60vh] flex items-center justify-center">
+                <div className="w-8 h-8 border-4 border-[var(--border)] border-t-[var(--primary)] rounded-full animate-spin" />
+            </div>
+        }>
+            <OrdersContent />
+        </Suspense>
     );
 }
