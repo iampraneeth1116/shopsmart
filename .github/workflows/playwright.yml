@@ -13,6 +13,16 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+    - name: Create server .env
+      working-directory: ./shopsmart/server
+      run: |
+        echo "PORT=4000" > .env
+        echo "CLIENT_URL=http://localhost:3000" >> .env
+        echo "DATABASE_URL=postgresql://neondb_owner:npg_QYjT8IBzgh7W@ep-icy-hall-ad4y9imn-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require" >> .env
+    - name: Create client .env.local
+      working-directory: ./shopsmart/client
+      run: |
+        echo "NEXT_PUBLIC_API_URL=http://localhost:4000/api" > .env.local
     - name: Install server dependencies
       working-directory: ./shopsmart/server
       run: npm ci
