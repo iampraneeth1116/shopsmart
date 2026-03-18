@@ -18,5 +18,6 @@ jobs:
         script: |
           cd ~/shopsmart
           git pull origin main
+          cd shopsmart
           chmod +x ./scripts/deploy.sh
           ./scripts/deploy.sh

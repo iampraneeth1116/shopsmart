@@ -20,26 +20,26 @@ jobs:
 
     # Backend
     - name: Install Backend Dependencies
-      working-directory: ./server
+      working-directory: ./shopsmart/server
       run: npm ci
 
     - name: Run Backend Linter
-      working-directory: ./server
+      working-directory: ./shopsmart/server
       run: npm run lint --if-present
 
     - name: Run Backend Tests
-      working-directory: ./server
+      working-directory: ./shopsmart/server
       run: npm run test --if-present
 
     # Frontend
     - name: Install Frontend Dependencies
-      working-directory: ./client
+      working-directory: ./shopsmart/client
       run: npm ci
 
     - name: Run Frontend Linter
-      working-directory: ./client
+      working-directory: ./shopsmart/client
       run: npm run lint --if-present
 
     - name: Run Frontend Tests
-      working-directory: ./client
+      working-directory: ./shopsmart/client
       run: npm run test --if-present
