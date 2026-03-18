@@ -1,6 +1,7 @@
 name: Deploy to EC2
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
 
@@ -11,13 +12,17 @@ jobs:
     steps:
     - name: Deploy to Server
       uses: appleboy/ssh-action@v1.0.3
+      env:
+        SERVER_ENV: ${{ secrets.SERVER_ENV }}
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
+        envs: SERVER_ENV
         script: |
           cd ~/shopsmart
           git pull origin main
           cd shopsmart
+          echo "$SERVER_ENV" > server/.env
           chmod +x ./scripts/deploy.sh
           ./scripts/deploy.sh
