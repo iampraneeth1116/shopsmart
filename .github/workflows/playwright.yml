@@ -13,15 +13,18 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - name: Install dependencies
-      working-directory: ./shopsmart
+    - name: Install server dependencies
+      working-directory: ./shopsmart/server
+      run: npm ci
+    - name: Install client dependencies
+      working-directory: ./shopsmart/client
       run: npm ci
     - name: Install Playwright Browsers
-      working-directory: ./shopsmart
+      working-directory: ./shopsmart/client
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      working-directory: ./shopsmart
-      run: npx playwright test --config=client/playwright.config.ts
+      working-directory: ./shopsmart/client
+      run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
