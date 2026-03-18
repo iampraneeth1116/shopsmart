@@ -40,7 +40,7 @@ export default function ProfilePage() {
             setSuccess('Profile updated successfully.');
             // clear success message after a few seconds
             setTimeout(() => setSuccess(''), 3000);
-        } catch (err) {
+        } catch {
             setError('Failed to update profile.');
         } finally {
             setSaving(false);

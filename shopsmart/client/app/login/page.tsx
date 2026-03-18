@@ -27,7 +27,7 @@ export default function LoginPage() {
         try {
             await login(email, password);
             router.push('/');
-        } catch (err: any) {
+        } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             setError(err.message || 'An error occurred during login.');
         } finally {
             setLoading(false);
@@ -113,7 +113,7 @@ export default function LoginPage() {
                 </form>
 
                 <div className="mt-6 text-center text-sm">
-                    <span className="text-[var(--muted)]">Don't have an account? </span>
+                    <span className="text-[var(--muted)]">Don&apos;t have an account? </span>
                     <Link href="/register" className="font-medium text-[var(--primary)] hover:underline">
                         Create an account
                     </Link>

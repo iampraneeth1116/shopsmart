@@ -83,7 +83,7 @@ export default function SearchPage() {
 
             {!loading && query && products.length === 0 && !error && (
                 <div className="text-center text-[var(--muted)] my-12">
-                    No results found for "{query}". Try checking your spelling or using different keywords.
+                    No results found for &quot;{query}&quot;. Try checking your spelling or using different keywords.
                 </div>
             )}
 

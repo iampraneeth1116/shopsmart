@@ -30,7 +30,7 @@ export default function ProductDetailPage() {
     const { user } = useAuth();
     const router = useRouter();
     const { addItem } = useCart();
-    const { items: wishlistItems, addItem: addWishlistItem, removeItem: removeWishlistItem, isInWishlist } = useWishlist();
+    const { addItem: addWishlistItem, removeItem: removeWishlistItem, isInWishlist } = useWishlist();
 
     useEffect(() => {
         if (params.id) {

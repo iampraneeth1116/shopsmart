@@ -55,10 +55,10 @@ export const api = {
         getById: (id: string) => fetchData(`/orders/${id}`),
     },
     auth: {
-        register: (data: any) => fetchData('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
-        login: (data: any) => fetchData('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
+        register: (data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => fetchData('/auth/register', { method: 'POST', body: JSON.stringify(data) }),
+        login: (data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => fetchData('/auth/login', { method: 'POST', body: JSON.stringify(data) }),
         getMe: () => fetchData('/auth/me'),
-        updateProfile: (data: any) => fetchData('/auth/me', { method: 'PUT', body: JSON.stringify(data) }),
+        updateProfile: (data: any /* eslint-disable-line @typescript-eslint/no-explicit-any */) => fetchData('/auth/me', { method: 'PUT', body: JSON.stringify(data) }),
     },
     wishlist: {
         get: () => fetchData('/wishlist'),

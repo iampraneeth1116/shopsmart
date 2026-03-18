@@ -35,6 +35,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
         } else {
             const stored = localStorage.getItem('styles-wishlist');
             if (stored) {
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 try { setItems(JSON.parse(stored)); } catch { /* ignore */ }
             } else {
                 setItems([]);

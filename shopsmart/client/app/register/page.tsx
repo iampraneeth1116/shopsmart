@@ -28,7 +28,7 @@ export default function RegisterPage() {
         try {
             await register(email, name, password);
             router.push('/');
-        } catch (err: any) {
+        } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             setError(err.message || 'An error occurred during registration.');
         } finally {
             setLoading(false);

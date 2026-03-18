@@ -18,7 +18,7 @@ interface ProductCardProps {
 
 export function ProductCard({ id, name, price, category, imageUrl }: ProductCardProps) {
     const { addItem: addCartItem } = useCart();
-    const { items: wishlistItems, addItem: addWishlistItem, removeItem: removeWishlistItem, isInWishlist } = useWishlist();
+    const { addItem: addWishlistItem, removeItem: removeWishlistItem, isInWishlist } = useWishlist();
     const { user } = useAuth();
     const router = useRouter();
     const [added, setAdded] = useState(false);

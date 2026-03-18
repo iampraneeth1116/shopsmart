@@ -49,7 +49,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const data = await api.auth.login({ email, password: password || 'demo123' });
             localStorage.setItem('styles-token', data.token);
             setUser(data.user);
-        } catch (error: any) {
+        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             throw new Error(error.message || 'Login failed');
         }
     };
@@ -59,7 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             const data = await api.auth.register({ email, name, password: password || 'demo123' });
             localStorage.setItem('styles-token', data.token);
             setUser(data.user);
-        } catch (error: any) {
+        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             throw new Error(error.message || 'Registration failed');
         }
     };
@@ -69,7 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             const data = await api.auth.updateProfile({ name, email });
             setUser(data.user);
-        } catch (error: any) {
+        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
             throw new Error(error.message || 'Profile update failed');
         }
     };

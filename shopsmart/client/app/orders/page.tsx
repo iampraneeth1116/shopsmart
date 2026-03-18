@@ -93,7 +93,7 @@ function OrdersContent() {
                 <div className="mb-12 bg-green-50 border border-green-200 p-8 text-center flex flex-col items-center justify-center shadow-sm">
                     <CheckCircle2 className="h-12 w-12 text-green-500 mb-4" />
                     <h2 className="text-2xl font-bold text-green-800 mb-2">Order Placed Successfully!</h2>
-                    <p className="text-green-700">Thank you for your purchase. We've received your order and are processing it now.</p>
+                    <p className="text-green-700">Thank you for your purchase. We&apos;ve received your order and are processing it now.</p>
                 </div>
             )}
 
@@ -110,7 +110,7 @@ function OrdersContent() {
                 <div className="text-center py-24 bg-[var(--accent)] border border-[var(--border)]">
                     <Package className="h-12 w-12 text-[var(--muted)] mx-auto mb-4 opacity-50" />
                     <h3 className="text-lg font-medium text-[var(--primary)] mb-2">No orders found</h3>
-                    <p className="text-[var(--muted)] mb-8 max-w-sm mx-auto">Looks like you haven't placed any orders yet. Start exploring our collections.</p>
+                    <p className="text-[var(--muted)] mb-8 max-w-sm mx-auto">Looks like you haven&apos;t placed any orders yet. Start exploring our collections.</p>
                     <Link href="/products">
                         <Button>Start Shopping</Button>
                     </Link>
